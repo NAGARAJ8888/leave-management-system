@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String @id @default(cuid())
+  name         String
+  email        String @unique
+  password     String
+  role         String
+  leaveBalance Int @default(20)
+
+  leaves Leave[]
+}
+
+model Leave {
+  id        String @id @default(cuid())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id])
+
+  type      String
+  reason    String
+
+  startDate DateTime
+  endDate   DateTime
+
+  status    String @default("PENDING")
+
+  createdAt DateTime @default(now())
+}
