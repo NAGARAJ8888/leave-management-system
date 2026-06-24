@@ -35,14 +35,20 @@ export async function POST(req: NextRequest) {
       role: user.role,
     });
 
-    response.cookies.set(
-      "userRole",
-      user.role,
-      {
-        httpOnly: true,
-        path: "/",
-      }
-    );
+    response.cookies.set("userId", user.id, {
+    httpOnly: true,
+    path: "/",
+    });
+
+    response.cookies.set("userRole", user.role, {
+    httpOnly: true,
+    path: "/",
+    });
+
+    response.cookies.set("userName", user.name, {
+    httpOnly: true,
+    path: "/",
+    });
 
     return response;
   } catch {

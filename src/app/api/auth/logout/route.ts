@@ -5,12 +5,12 @@ export async function POST() {
     success: true,
   });
 
-  response.cookies.set(
-    "userRole",
-    "",
-    {
-      expires: new Date(0),
-      path: "/",
+  ["userId", "userRole", "userName"].forEach(
+    (cookie) => {
+      response.cookies.set(cookie, "", {
+        expires: new Date(0),
+        path: "/",
+      });
     }
   );
 

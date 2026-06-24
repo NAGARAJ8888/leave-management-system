@@ -1,30 +1,48 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function EmployeePage() {
-  const router = useRouter();
+  const [leaves, setLeaves] = useState([]);
 
-  async function logout() {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-    });
-
-    router.push("/login");
+  async function loadLeaves() {
+    const res = await fetch("/api/leaves");
+    const data = await res.json();
+    setLeaves(data);
   }
 
+  useEffect(() => {
+    loadLeaves();
+  }, []);
+
   return (
-    <div className="p-10">
-      <h1 className="text-2xl font-bold">
-        Employee Dashboard
+    <div className="p-8">
+      <h1 className="mb-6 text-2xl font-bold">
+        My Leave Requests
       </h1>
 
-      <button
-        onClick={logout}
-        className="mt-4 rounded bg-red-500 px-4 py-2 text-white"
-      >
-        Logout
-      </button>
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th className="border p-2">Type</th>
+            <th className="border p-2">Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {leaves.map((leave: any) => (
+            <tr key={leave.id}>
+              <td className="border p-2">
+                {leave.type}
+              </td>
+
+              <td className="border p-2">
+                {leave.status}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
