@@ -185,10 +185,10 @@ These credentials are displayed on the login page (`src/app/login/page.tsx`) and
 
 | Page | Placeholder |
 |---|---|
-| Landing (`/`) | ![Landing screenshot](./public/screenshot-landing.png) |
-| Login (`/login`) | ![Login screenshot](./public/screenshot-login.png) |
-| Employee dashboard (`/employee`) | ![Employee screenshot](./public/screenshot-employee.png) |
-| Admin dashboard (`/admin`) | ![Admin screenshot](./public/screenshot-admin.png) |
+| Landing (`/`) | ![Landing screenshot](./public/landing-page.png) |
+| Login (`/login`) | ![Login screenshot](./public/login-page.png) |
+| Employee dashboard (`/employee`) | ![Employee screenshot](./public/employee-page.png) |
+| Admin dashboard (`/admin`) | ![Admin screenshot](./public/admin-page.png) |
 
 ## License
 MIT
